@@ -1,0 +1,17 @@
+<launch>
+  <!-- Load parameters from config file -->
+  <rosparam command="load" file="$(find exploration_manager)/config/exploration_params.yaml" />
+  
+  <!-- Graph Builder Node -->
+  <node name="graph_builder" pkg="exploration_manager" type="graph_builder_node.py" output="screen">
+    <!-- Parameters are loaded from config file -->
+  </node>
+  
+  <!-- Exploration Executor Node -->
+  <node name="exploration_executor" pkg="exploration_manager" type="exploration_executor_node.py" output="screen">
+    <!-- Parameters are loaded from config file -->
+  </node>
+  
+  <!-- RViz for visualization (optional) -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find exploration_manager)/config/exploration.rviz" />
+</launch> 

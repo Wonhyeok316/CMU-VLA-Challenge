@@ -1,17 +1,22 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(dummy_vlm)
+project(color_scan_generation)
 
 set(CMAKE_BUILD_TYPE Release)
 set(BUILD_STATIC_LIBS ON)
 set(BUILD_SHARED_LIBS OFF)
-set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 ## Find catkin macros and libraries
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
   sensor_msgs
+  cv_bridge
+  pcl_ros
 )
+
+find_package(OpenCV REQUIRED)
+find_package(PCL REQUIRED)
+find_package(Eigen3 REQUIRED)
 
 ###################################
 ## catkin specific configuration ##
@@ -22,6 +27,8 @@ catkin_package(
   roscpp
   std_msgs
   sensor_msgs
+  cv_bridge
+  pcl_ros
 )
 
 ###########
@@ -32,6 +39,9 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
   ${catkin_INCLUDE_DIRS}
+  ${OpenCV_INCLUDE_DIRS}
+  ${PCL_INCLUDE_DIRS}
+  ${EIGEN3_INCLUDE_DIR}
   "${PROJECT_SOURCE_DIR}/include"
   /usr/local/include # Location when using 'make system_install'
   /usr/include       # More usual location (e.g. when installing using a package)
@@ -44,12 +54,12 @@ link_directories(
 )
 
 ## Declare executables
-add_executable(dummyVLM src/dummyVLM.cpp)
+add_executable(colorScanGeneration src/colorScanGeneration.cpp)
 
 ## Specify libraries to link a library or executable target against
-target_link_libraries(dummyVLM ${catkin_LIBRARIES})
+target_link_libraries(colorScanGeneration ${catkin_LIBRARIES} ${OpenCV_LIBRARIES} ${PCL_LIBRARIES})
 
-install(TARGETS dummyVLM
+install(TARGETS colorScanGeneration
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
@@ -57,7 +67,4 @@ install(TARGETS dummyVLM
 
 install(DIRECTORY launch/
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch
-)
-install(DIRECTORY data/
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/data
 )

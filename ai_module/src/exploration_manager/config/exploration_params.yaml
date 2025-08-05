@@ -1,0 +1,16 @@
+exploration_manager:
+  # Grid parameters
+  grid_resolution: 0.1        # 그리드 셀 크기 (미터)
+  grid_width: 100             # 그리드 너비 (셀 개수)
+  grid_height: 100            # 그리드 높이 (셀 개수)
+  
+  # Grid origin in world coordinates
+  grid_origin_x: -5.0         # 그리드 원점 X 좌표 (미터)
+  grid_origin_y: -5.0         # 그리드 원점 Y 좌표 (미터)
+  
+  # Inflation parameters
+  inflation_radius: 0.5       # Inflation 반지름 (미터)
+  
+  # Frame parameters
+  map_frame: "map"            # 맵 프레임 ID
+  base_link_frame: "base_link" # 로봇 베이스 프레임 ID 
