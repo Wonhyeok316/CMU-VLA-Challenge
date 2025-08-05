@@ -1,7 +1,5 @@
 # CMU-VLA-Challenge Exploration Manager
 
-ROS Noetic 기반의 자율 탐색 시스템입니다.
-
 ## 🐳 Docker 이미지 사용법
 
 ### 1. 도커 이미지 다운로드
