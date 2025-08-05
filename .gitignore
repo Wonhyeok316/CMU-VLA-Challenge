@@ -9,3 +9,5 @@ system/unity/devel/
 .catkin_workspace
 *.pkl
 *.pth
+# Exclude leo_vlm folder
+ai_module/src/leo_vlm/
